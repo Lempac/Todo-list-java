@@ -20,7 +20,7 @@ public class Main {
         JPanel todo = new JPanel();
         JEditorPane todoText = new JEditorPane();
         JButton add = new JButton("+");
-        add.addActionListener(_ -> {
+        add.addActionListener(e -> {
             Main.addTodo(todoText.getText());
             todoText.setText(null
             );
@@ -39,14 +39,14 @@ public class Main {
         JEditorPane todoText = new JEditorPane();
         todoText.setText(text);
         JButton remove = new JButton("-");
-        isDone.addChangeListener(_ -> {
+        isDone.addChangeListener(e -> {
             Font font = todoText.getFont();
             Map<TextAttribute, Object> attributes = new HashMap<>();
             attributes.put(TextAttribute.STRIKETHROUGH, isDone.isSelected() ? TextAttribute.STRIKETHROUGH_ON : false);
             todoText.setFont(font.deriveFont(attributes));
             todoText.setEditable(!todoText.isEditable());
         });
-        remove.addActionListener(_ -> {
+        remove.addActionListener(e -> {
             panel.remove(todo);
             frame.pack();
         });
